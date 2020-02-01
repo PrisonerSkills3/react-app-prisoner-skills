@@ -11,6 +11,7 @@ Prison profile will need to get data from the backend and display it to the dom 
 */
 
 import React from 'react';
+import '../styles/PrisonProfile.css';
 
 const PrisonProfile = () => {
   return (

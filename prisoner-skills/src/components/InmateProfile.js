@@ -9,6 +9,7 @@ will need to display the inmates details
 */
 
 import React from 'react';
+import '../styles/InmateProfile.css';
 
 const InmateProfile = () => {
   return (

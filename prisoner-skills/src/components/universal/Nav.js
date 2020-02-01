@@ -6,12 +6,16 @@
 */
 
 import React from 'react';
+import '../../styles/Nav.css';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
   return (
-    <div>
-      Navigation component
-    </div>
+    <nav>
+      <h2>Prisoner Skills</h2>
+      <Link to="/">Home</Link>
+      <Link to="/login">Login</Link>
+    </nav>
   );
 };
 
