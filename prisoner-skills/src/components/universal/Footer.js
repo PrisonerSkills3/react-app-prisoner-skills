@@ -1,3 +1,8 @@
+/*
+-logo/name
+-home link
+*/
+
 import React from 'react';
 
 const Footer = () => {
