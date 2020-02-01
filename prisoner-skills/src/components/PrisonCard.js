@@ -3,6 +3,7 @@ Will need to display the details of the prison in a contained format (like a car
 */
 
 import React from 'react';
+import '../styles/PrisonCard.css';
 
 const PrisonCard = () => {
   return (

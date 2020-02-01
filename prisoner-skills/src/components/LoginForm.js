@@ -6,11 +6,18 @@ Log in form should make a POST request to the endpoint the backend will give us 
 */
 
 import React from 'react';
+import '../styles/LoginForm.css';
+import { Link } from 'react-router-dom';
+import Nav from './universal/Nav';
+import Footer from './universal/Footer';
 
 const LoginForm = () => {
   return (
     <div>
-      Login form
+      <Nav />
+      <h3>Login Form</h3>
+      <span>Don't have an account yet?</span> <span><Link to="/signup">Sign Up Here</Link></span>
+      <Footer />
     </div>
   );
 };

@@ -17,11 +17,21 @@ the home page needs to have the following:
 */
 
 import React from 'react';
+import '../styles/Homepage.css';
+// import { Switch, Route } from 'react-router-dom';
+import Nav from './universal/Nav';
+import Footer from './universal/Footer';
+import LoginForm from './LoginForm';
 
 const Homepage = () => {
   return (
     <div>
-      Home page component
+      <Nav />
+
+      {/* Home page content will go here */}
+      <h1>Home Page</h1>
+
+      <Footer />
     </div>
   );
 };
