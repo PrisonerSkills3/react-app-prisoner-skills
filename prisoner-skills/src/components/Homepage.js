@@ -21,6 +21,7 @@ import '../styles/Homepage.css';
 // import { Switch, Route } from 'react-router-dom';
 import Nav from './universal/Nav';
 import Footer from './universal/Footer';
+import Prisons from './Prisons';
 import { data } from '../data';
 
 const Homepage = () => {
@@ -30,18 +31,7 @@ const Homepage = () => {
 
       {/* Home page content will go here */}
       <h1>Home Page</h1>
-      {/* 
-      {data.map(prison => {
-        return (
-          <div>
-            <p>{prison.prison_name}</p>
-            {prison.inmates.map(person => {
-              return <p>{person.name}</p>
-            })}
-          </div>
-        )
-      })} 
-      */}
+      <Prisons data={data} />
 
       <Footer />
     </div>

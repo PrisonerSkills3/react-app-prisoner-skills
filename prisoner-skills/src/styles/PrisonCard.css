@@ -1,0 +1,13 @@
+.skill{
+  margin: 0 1vw;
+}
+
+.inmateName{
+  font-weight: 500;
+}
+
+.prisonCard{
+  border: 1px solid black;
+  margin: 1vh 1vw;
+  width: 300px;
+}

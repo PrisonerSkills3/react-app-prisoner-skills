@@ -75,7 +75,7 @@ export const data = [
     "prison_address": "987",
     "inmates": [
       {
-        name: 'Legalos',
+        name: 'Legolas',
         skills: ['swimming', 'archery'],
         availability: false
       },
