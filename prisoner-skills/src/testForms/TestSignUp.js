@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Footer from './universal/Footer';
-import Nav from './universal/Nav';
+import Footer from '../components/universal/Footer';
+import Nav from '../components/universal/Nav';
 import {Link} from 'react-router-dom';
 
 class TestSignUp extends React.Component {

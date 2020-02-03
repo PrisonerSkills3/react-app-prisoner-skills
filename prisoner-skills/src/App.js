@@ -4,8 +4,8 @@ import './styles/App.css';
 import HomePage from './components/Homepage';
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
-import TestLogin from './components/TestLogin';
-import TestSignUp from './components/TestSignUp';
+import TestLogin from './testForms/TestLogin'
+import TestSignUp from './testForms/TestSignUp';
 
 function App() {
   return (
