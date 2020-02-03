@@ -1,3 +1,9 @@
+import {
+  FETCH_PRISONS_START,
+  FETCH_PRISONS_SUCCESS,
+  FETCH_PRISONS_FAILURE
+} from '../actions/fetchPrisons';
+
 const initialState = {
   isLoading: false,
   error: '',
@@ -9,6 +15,12 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
   switch(action.type){
+    case FETCH_PRISONS_START:
+      return{
+        ...state,
+        isLoading: true,
+        error: ''
+      }
 
     default:
       return state
