@@ -5,7 +5,7 @@ Log in form should make a POST request to the endpoint the backend will give us 
 -password
 */
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../styles/LoginForm.css";
 import { Link } from "react-router-dom";
 import Nav from "./universal/Nav";
