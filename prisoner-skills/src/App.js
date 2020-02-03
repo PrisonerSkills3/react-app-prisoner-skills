@@ -4,16 +4,14 @@ import './styles/App.css';
 import HomePage from './components/Homepage';
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
-import TestLogin from './testForms/TestLogin'
-import TestSignUp from './testForms/TestSignUp';
 
 function App() {
   return (
     <div className="App">
 
       <Switch>
-        <Route path="/login" component={TestLogin} />
-        <Route path="/signup" component={TestSignUp} />
+        <Route path="/login" component={LoginForm} />
+        <Route path="/signup" component={SignUpForm} />
         <Route path="/" component={HomePage} />
       </Switch>
 
