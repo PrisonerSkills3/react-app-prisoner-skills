@@ -12,7 +12,7 @@ const Nav = () => {
   return (
     <nav>
       <h3>Nav component</h3>
-      {/* <Link />'s will go here */}
+      {/* <Link />'s will go here! */}
     </nav>
   );
 };
