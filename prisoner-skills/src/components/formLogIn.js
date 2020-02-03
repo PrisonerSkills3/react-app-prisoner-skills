@@ -38,7 +38,6 @@ const LogIn = () => {
         validationSchema={SignUpSchema}
         onSubmit={(values, formikBag) => {
           console.log("Values", values);
-          console.log("formikBag", formikBag);
 
           formikBag.resetForm();
           axios
@@ -48,6 +47,7 @@ const LogIn = () => {
             )
             .then((res) => {
               console.log(res);
+              localStorage.setItem('TOKEN', res.data.token);
             })
             .catch((err) => {
               console.log(err);

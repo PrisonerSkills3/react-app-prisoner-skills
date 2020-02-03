@@ -34,6 +34,7 @@ class SignUp extends React.Component {
     axios.post(`https://prisoner-skills-backend.herokuapp.com/api/auth/register`, this.state.credentials)
       .then(res => {
         console.log(res);
+        this.props.history.push('/log-in');
       })
       .catch(err => {
         console.log(err);
