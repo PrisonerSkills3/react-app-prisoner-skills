@@ -9,6 +9,16 @@ export const data = [
         skills: ['sewing', 'cooking', 'wood working'],
         availability: false
       },
+      {
+        name: 'Bilbo',
+        skills: ['writing', 'talking'],
+        availability: false
+      },
+      {
+        name: 'Sauron',
+        skills: ['dominance', 'searching', 'ruling them all'],
+        availability: false
+      }
     ]
   },
   {
