@@ -1,6 +1,8 @@
 import React from 'react';
 import PrisonCard from './PrisonCard';
 import '../styles/Prisons.css';
+import { connect } from 'react-redux';
+import { fetchPrisons } from '../actions/fetchPrisons';
 
 const Prisons = ({ data }) => {
   return (
@@ -20,4 +22,13 @@ const Prisons = ({ data }) => {
   );
 };
 
-export default Prisons;
+const mapStateToProps = state => ({
+  isLoading: state.isLoading,
+  error: state.error,
+  prison_name: state.prison_name,
+  number_of_prisoners: state.number_of_prisoners,
+  prison_address: state.prison_address,
+  inmates: state.inmates
+})
+
+export default connect(mapStateToProps, { fetchPrisons })(Prisons);
