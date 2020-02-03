@@ -6,3 +6,7 @@ footer {
   flex-direction: column;
   padding-bottom: 2%;
 }
+
+footer a {
+  text-decoration: none;
+}
