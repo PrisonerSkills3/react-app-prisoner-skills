@@ -1,6 +1,6 @@
 /*
 -logo/name
--home link
+-home <Link />
 */
 
 import React from 'react';
@@ -10,6 +10,7 @@ const Footer = () => {
   return (
     <div>
       Footer component
+      {/* <Link />'s go here */}
     </div>
   );
 };

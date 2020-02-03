@@ -1,20 +1,18 @@
 /*
 -nav bar
   --Logo/Name
-  -- Home link
-  -- Log In link (will be conditionally rerendered to display sign out if there is a token in the local storage)
+  -- Home <Link />
+  -- Log In <Link /> (will be conditionally rerendered to display sign out if there is a token in the local storage)
 */
 
 import React from 'react';
 import '../../styles/Nav.css';
-import { Link } from 'react-router-dom';
 
 const Nav = () => {
   return (
     <nav>
-      <h2>Prisoner Skills</h2>
-      <Link to="/">Home</Link>
-      <Link to="/login">Login</Link>
+      <h3>Nav component</h3>
+      {/* <Link />'s will go here */}
     </nav>
   );
 };
