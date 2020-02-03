@@ -41,17 +41,17 @@ const LogIn = () => {
           console.log("formikBag", formikBag);
 
           formikBag.resetForm();
-          // axios
-          //   .post(
-          //     "https://prisoner-skills-backend.herokuapp.com/api/auth/login",
-          //     values
-          //   )
-          //   .then((res) => {
-          //     console.log(res);
-          //   })
-          //   .catch((err) => {
-          //     console.log(err);
-          //   });
+          axios
+            .post(
+              "https://prisoner-skills-backend.herokuapp.com/api/auth/login",
+              values
+            )
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }}
       >
         {({ errors, touched }) => (
