@@ -3,15 +3,17 @@
 -home <Link />
 */
 
-import React from 'react';
-import '../../styles/Footer.css';
+import React from "react";
+import "../../styles/Footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div>
-      Footer component
+    <footer>
       {/* <Link />'s go here */}
-    </div>
+      <h4>Prisoner Skills</h4>
+      <Link to="/">Home</Link>
+    </footer>
   );
 };
 

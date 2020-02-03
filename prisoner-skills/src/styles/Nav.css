@@ -1,0 +1,22 @@
+header {
+  background: grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin-left: 2%;
+}
+
+header nav {
+  border: 0px solid red;
+  margin-right: 2%;
+  width: 115px;
+  display: flex;
+  justify-content: space-between;
+}
+
+header nav a {
+  text-decoration: none;
+}
