@@ -20,7 +20,7 @@ const SignUpSchema = Yup.object().shape({
     .min(3, "Username of 3 characters minimum")
     .required("* Required Field"),
   password: Yup.string()
-    .min(5, "Password of 5 characters minimum")
+    .min(3, "Password of 3 characters minimum")
     .required("* Required Field")
 });
 
@@ -41,34 +41,38 @@ const LogIn = () => {
           console.log("formikBag", formikBag);
 
           formikBag.resetForm();
-          axios
-            .post(
-              "https://prisoner-skills-backend.herokuapp.com/api/auth/login",
-              values
-            )
-            .then((res) => {
-              console.log(res);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          // axios
+          //   .post(
+          //     "https://prisoner-skills-backend.herokuapp.com/api/auth/login",
+          //     values
+          //   )
+          //   .then((res) => {
+          //     console.log(res);
+          //   })
+          //   .catch((err) => {
+          //     console.log(err);
+          //   });
         }}
       >
         {({ errors, touched }) => (
           <Form>
-            <label htmlFor="username">Username: </label>
+            <label htmlFor="username">*Username: </label>
             <Field
               name="username"
               type="text"
-              placeholder="example@email.com"
+              placeholder="username"
             />
             {errors.username && touched.username ? (
               <div className="errors">{errors.username}</div>
             ) : null}
             <br />
 
-            <label htmlFor="password">Password: </label>
-            <Field name="password" type="password" placeholder="abc123!@#" />
+            <label htmlFor="password">*Password: </label>
+            <Field
+              name="password"
+              type="password"
+              placeholder="password"
+            />
             {errors.password && touched.password ? (
               <div className="errors">{errors.password}</div>
             ) : null}
