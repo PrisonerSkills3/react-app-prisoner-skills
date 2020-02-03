@@ -21,7 +21,6 @@ import '../styles/Homepage.css';
 // import { Switch, Route } from 'react-router-dom';
 import Nav from './universal/Nav';
 import Footer from './universal/Footer';
-import LoginForm from './LoginForm';
 
 const Homepage = () => {
   return (

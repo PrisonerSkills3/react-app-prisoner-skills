@@ -15,15 +15,15 @@ import { Link } from 'react-router-dom';
 import Nav from './universal/Nav';
 import Footer from './universal/Footer';
 
-const SignUpForm = () => {
+const SignUp = () => {
   return (
     <div>
       <Nav />
       <h3>Sign Up Form</h3>
-      <span>Already have an account yet?</span> <span><Link to="/login">Log In Here</Link></span>
+      <span>Already have an account yet?</span> <span><Link to="/log-in">Log In Here</Link></span>
       <Footer />
     </div>
   );
 };
 
-export default SignUpForm;
+export default SignUp;

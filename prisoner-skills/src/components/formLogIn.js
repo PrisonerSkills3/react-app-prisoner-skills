@@ -11,15 +11,15 @@ import { Link } from 'react-router-dom';
 import Nav from './universal/Nav';
 import Footer from './universal/Footer';
 
-const LoginForm = () => {
+const LogIn = () => {
   return (
     <div>
       <Nav />
       <h3>Login Form</h3>
-      <span>Don't have an account yet?</span> <span><Link to="/signup">Sign Up Here</Link></span>
+      <span>Don't have an account yet?</span> <span><Link to="/sign-up">Sign Up Here</Link></span>
       <Footer />
     </div>
   );
 };
 
-export default LoginForm;
+export default LogIn;
