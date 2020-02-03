@@ -1,0 +1,8 @@
+footer {
+  border: 0px solid blue;
+  background: grey;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2%;
+}
