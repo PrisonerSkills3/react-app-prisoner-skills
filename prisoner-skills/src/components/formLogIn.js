@@ -28,7 +28,7 @@ const SignUpSchema = Yup.object().shape({
 const LogIn = () => {
   const [isLoading, setIsLoading] = useState(false);
   return (
-    <div>
+    <div className="loginContainer">
       <Nav />
       <h3>Login to Your Account</h3>
       {/* Formik values/validation */}
@@ -94,10 +94,12 @@ const LogIn = () => {
           </div>
         )}
       </Formik>
-      <span>Don't have an account yet?</span>{" "}
-      <span>
-        <Link to="/sign-up">Sign Up Here</Link>
-      </span>
+      <div className="noAccountDiv">
+        <span>Don't have an account yet?</span>{" "}
+        <span>
+          <Link to="/sign-up">Sign Up Here</Link>
+        </span>
+      </div>
       <Footer />
     </div>
   );
