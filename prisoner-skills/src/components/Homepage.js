@@ -22,16 +22,16 @@ import '../styles/Homepage.css';
 import Nav from './universal/Nav';
 import Footer from './universal/Footer';
 import Prisons from './Prisons';
-import { data } from '../data';
+// import { data } from '../data';
+// import axios from 'axios';
 
-const Homepage = () => {
+const Homepage = (props) => {
   return (
     <div>
       <Nav />
 
-      {/* Home page content will go here */}
       <h1>Home Page</h1>
-      <Prisons data={data} />
+      <Prisons />
 
       <Footer />
     </div>

@@ -7,10 +7,7 @@ import {
 const initialState = {
   isLoading: false,
   error: '',
-  prison_name: '',
-  number_of_prisoners: '',
-  prison_address: '',
-  inmates: []
+  prisons: []
 }
 
 export const reducer = (state = initialState, action) => {
@@ -20,6 +17,21 @@ export const reducer = (state = initialState, action) => {
         ...state,
         isLoading: true,
         error: ''
+      }
+
+    case FETCH_PRISONS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: '',
+        prisons: action.payload
+      }
+
+    case FETCH_PRISONS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
       }
 
     default:

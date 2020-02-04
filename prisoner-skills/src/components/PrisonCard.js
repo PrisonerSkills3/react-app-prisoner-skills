@@ -3,20 +3,21 @@ Will need to display the details of the prison in a contained format (like a car
 */
 
 import React from 'react';
+import { Link, Switch, Route, useRouteMatch } from 'react-router-dom';
+import PrisonProfile from './PrisonProfile';
 import '../styles/PrisonCard.css';
 
 const PrisonCard = props => {
   return (
-    <div key={props.prison_name} className="prisonCard">
-      <h4>{props.prison_name}</h4>
-      {props.inmates.map(person => {
+    <div>
+      {props.prisons.map(prison => {
         return (
-          <div key={person.name}>
-            <p className="inmateName">{person.name}</p>
-            {person.skills.map(skill => {
-              return <span key={skill} className="skill">{skill}</span>
-            })}
-          </div>
+          <Link to={`/prison-profile/${prison.id}`} key={prison.prison_name}>
+            <div className="prisonCard">
+              <h4>{prison.prison_name}</h4>
+              <p>{prison.prison_address}</p>
+            </div>
+          </Link>
         )
       })}
     </div>
