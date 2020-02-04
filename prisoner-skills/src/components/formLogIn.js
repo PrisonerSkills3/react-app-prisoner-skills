@@ -5,12 +5,13 @@ Log in form should make a POST request to the endpoint the backend will give us 
 -password
 */
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/LoginForm.css";
 import { Link } from "react-router-dom";
 import Nav from "./universal/Nav";
 import Footer from "./universal/Footer";
 import { Formik, Form, Field } from "formik";
+import Loader from 'react-loader-spinner'
 import * as Yup from "yup";
 import axios from "axios";
 
@@ -20,11 +21,12 @@ const SignUpSchema = Yup.object().shape({
     .min(3, "Username of 3 characters minimum")
     .required("* Required Field"),
   password: Yup.string()
-    .min(5, "Password of 5 characters minimum")
+    .min(3, "Password of 3 characters minimum")
     .required("* Required Field")
 });
 
 const LogIn = () => {
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <div className="loginContainer">
       <Nav />
@@ -38,8 +40,7 @@ const LogIn = () => {
         validationSchema={SignUpSchema}
         onSubmit={(values, formikBag) => {
           console.log("Values", values);
-          console.log("formikBag", formikBag);
-
+          setIsLoading(true);
           formikBag.resetForm();
           axios
             .post(
@@ -48,34 +49,49 @@ const LogIn = () => {
             )
             .then((res) => {
               console.log(res);
+              localStorage.setItem('TOKEN', res.data.token);
+              setIsLoading(false);
             })
             .catch((err) => {
               console.log(err);
+              setIsLoading(false);
             });
         }}
       >
         {({ errors, touched }) => (
-          <Form>
-            <label htmlFor="username">Username: </label>
-            <Field
-              name="username"
-              type="text"
-              placeholder="example@email.com"
-            />
-            {errors.username && touched.username ? (
-              <div className="errors">{errors.username}</div>
-            ) : null}
-            <br />
+          <div>
+            {
+              isLoading
+                ?
+                <Loader type="TailSpin" color="#3EC2CF" height={50} width={50} />
+                :
+                <Form>
+                  <label htmlFor="username">*Username: </label>
+                  <Field
+                    name="username"
+                    type="text"
+                    placeholder="username"
+                  />
+                  {errors.username && touched.username ? (
+                    <div className="errors">{errors.username}</div>
+                  ) : null}
+                  <br />
 
-            <label htmlFor="password">Password: </label>
-            <Field name="password" type="password" placeholder="abc123!@#" />
-            {errors.password && touched.password ? (
-              <div className="errors">{errors.password}</div>
-            ) : null}
-            <br />
+                  <label htmlFor="password">*Password: </label>
+                  <Field
+                    name="password"
+                    type="password"
+                    placeholder="password"
+                  />
+                  {errors.password && touched.password ? (
+                    <div className="errors">{errors.password}</div>
+                  ) : null}
+                  <br />
 
-            <button type="submit">Login</button>
-          </Form>
+                  <button type="submit">Login</button>
+                </Form>
+            }
+          </div>
         )}
       </Formik>
       <div className="noAccountDiv">

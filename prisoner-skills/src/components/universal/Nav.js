@@ -16,7 +16,18 @@ const Nav = () => {
       <h1>Prisoner Skills</h1>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/log-in">Log In</Link>
+
+        {/* This should conditionally render a login or log out button based on if there is a token within the local storage, and the logout button should clear local storage and then route back to login page */}
+        {
+          !localStorage.getItem('TOKEN')
+          ? 
+            <Link to="/log-in">Login</Link>
+          : 
+            <Link to="/log-in" onClick={() => {
+              localStorage.clear();
+              window.location.reload();
+            }}>Logout</Link>
+        }
       </nav>
     </header>
   );
