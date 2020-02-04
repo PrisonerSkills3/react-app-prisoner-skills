@@ -25,7 +25,7 @@ const SignUpSchema = Yup.object().shape({
     .required("* Required Field")
 });
 
-const LogIn = () => {
+const LogIn = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   return (
     <div className="loginContainer">
@@ -39,18 +39,14 @@ const LogIn = () => {
         }}
         validationSchema={SignUpSchema}
         onSubmit={(values, formikBag) => {
-          console.log("Values", values);
           setIsLoading(true);
           formikBag.resetForm();
-          axios
-            .post(
-              "https://prisoner-skills-backend.herokuapp.com/api/auth/login",
-              values
-            )
+          axios.post("https://prisoner-skills-backend.herokuapp.com/api/auth/login", values)
             .then((res) => {
               console.log(res);
               localStorage.setItem('TOKEN', res.data.token);
               setIsLoading(false);
+              props.history.push('/');
             })
             .catch((err) => {
               console.log(err);
