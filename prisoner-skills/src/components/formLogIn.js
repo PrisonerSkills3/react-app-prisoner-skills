@@ -63,7 +63,7 @@ const LogIn = () => {
             {
               isLoading
                 ?
-                <Loader type="TailSpin" color="#07FE20" height={50} width={50} />
+                <Loader type="TailSpin" color="#3EC2CF" height={50} width={50} />
                 :
                 <Form>
                   <label htmlFor="username">*Username: </label>
