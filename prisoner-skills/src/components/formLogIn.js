@@ -46,7 +46,8 @@ const LogIn = (props) => {
               console.log(res);
               localStorage.setItem('TOKEN', res.data.token);
               setIsLoading(false);
-              props.history.push('/');
+              // props.history.push('/')
+              // props.history.push(`/prison-profile/${res.data.id}`);
             })
             .catch((err) => {
               console.log(err);

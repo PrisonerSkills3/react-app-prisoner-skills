@@ -16,7 +16,7 @@ the home page needs to have the following:
 -footer
 */
 
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import '../styles/Homepage.css';
 // import { Switch, Route } from 'react-router-dom';
 import Nav from './universal/Nav';
@@ -25,9 +25,7 @@ import Prisons from './Prisons';
 // import { data } from '../data';
 // import axios from 'axios';
 
-// https://prisoner-skills-backend.herokuapp.com/api/prisons
-
-const Homepage = () => {
+const Homepage = (props) => {
   return (
     <div>
       <Nav />
