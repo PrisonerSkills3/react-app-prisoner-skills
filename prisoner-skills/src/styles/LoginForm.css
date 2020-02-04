@@ -22,6 +22,7 @@ input {
   padding: 0.75%;
   margin: 1%;
   width: 75%;
+  box-shadow: 5px #e8a87c;
 }
 
 form {
@@ -37,6 +38,7 @@ button {
   background: #41b3a3;
   border: none;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 button:hover {

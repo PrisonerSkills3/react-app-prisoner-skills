@@ -1,3 +1,14 @@
 .signupContainer {
   background: #d8d9d1;
 }
+
+input {
+  border-radius: 8px;
+  padding: 0.75%;
+  margin: 1.5%;
+  width: 75%;
+}
+
+.haveAccountDiv {
+  margin: 1% 0%;
+}

@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import Nav from "./universal/Nav";
 import Footer from "./universal/Footer";
 import { Formik, Form, Field } from "formik";
-import Loader from 'react-loader-spinner'
+import Loader from "react-loader-spinner";
 import * as Yup from "yup";
 import axios from "axios";
 
@@ -31,6 +31,7 @@ const LogIn = () => {
     <div className="loginContainer">
       <Nav />
       <h3>Login to Your Account</h3>
+
       {/* Formik values/validation */}
       <Formik
         initialValues={{
@@ -49,7 +50,7 @@ const LogIn = () => {
             )
             .then((res) => {
               console.log(res);
-              localStorage.setItem('TOKEN', res.data.token);
+              localStorage.setItem("TOKEN", res.data.token);
               setIsLoading(false);
             })
             .catch((err) => {
@@ -60,40 +61,29 @@ const LogIn = () => {
       >
         {({ errors, touched }) => (
           <div>
-            {
-              isLoading
-                ?
-                <Loader type="TailSpin" color="#3EC2CF" height={50} width={50} />
-                :
-                <Form>
-                  <label htmlFor="username">*Username: </label>
-                  <Field
-                    name="username"
-                    type="text"
-                    placeholder="username"
-                  />
-                  {errors.username && touched.username ? (
-                    <div className="errors">{errors.username}</div>
-                  ) : null}
-                  <br />
+            {isLoading ? (
+              <Loader type="TailSpin" color="#3EC2CF" height={50} width={50} />
+            ) : (
+              <Form>
+                <Field name="username" type="text" placeholder="Username" />
+                {errors.username && touched.username ? (
+                  <div className="errors">{errors.username}</div>
+                ) : null}
+                <br />
 
-                  <label htmlFor="password">*Password: </label>
-                  <Field
-                    name="password"
-                    type="password"
-                    placeholder="password"
-                  />
-                  {errors.password && touched.password ? (
-                    <div className="errors">{errors.password}</div>
-                  ) : null}
-                  <br />
+                <Field name="password" type="password" placeholder="Password" />
+                {errors.password && touched.password ? (
+                  <div className="errors">{errors.password}</div>
+                ) : null}
+                <br />
 
-                  <button type="submit">Login</button>
-                </Form>
-            }
+                <button type="submit">Login</button>
+              </Form>
+            )}
           </div>
         )}
       </Formik>
+
       <div className="noAccountDiv">
         <span>Don't have an account yet?</span>{" "}
         <span>

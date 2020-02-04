@@ -38,7 +38,7 @@ class SignUp extends React.Component {
       )
       .then((res) => {
         console.log(res);
-        this.props.history.push('/log-in');
+        this.props.history.push("/log-in");
       })
       .catch((err) => {
         console.log(err);
@@ -107,10 +107,12 @@ class SignUp extends React.Component {
 
           <button>Register</button>
         </form>
-        <span>Already have an account yet?</span>{" "}
-        <span>
-          <Link to="/log-in">Log In Here</Link>
-        </span>
+        <div className="haveAccountDiv">
+          <span>Already have an account yet?</span>{" "}
+          <span>
+            <Link to="/log-in">Log In Here</Link>
+          </span>
+        </div>
         <Footer />
       </div>
     );
