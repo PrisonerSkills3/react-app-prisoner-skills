@@ -1,5 +1,5 @@
 header {
-  background: grey;
+  background: #012b4d;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,11 +12,19 @@ header h1 {
 header nav {
   border: 0px solid red;
   margin-right: 2%;
-  width: 115px;
+  width: 200px;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 header nav a {
   text-decoration: none;
+  background: #41b3a3;
+  width: 25%;
+  padding: 2%;
+}
+
+header nav a:hover {
+  color: #e8a87c;
 }

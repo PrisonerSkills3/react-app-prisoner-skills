@@ -1,12 +1,21 @@
 footer {
   border: 0px solid blue;
-  background: grey;
+  background: #012b4d;
   text-align: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   padding-bottom: 2%;
 }
 
 footer a {
   text-decoration: none;
+  background: #41b3a3;
+  width: 7%;
+  padding: 1%;
+}
+
+footer a:hover {
+  color: #e8a87c;
 }
