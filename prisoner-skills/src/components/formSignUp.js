@@ -1,10 +1,10 @@
-import React from 'react';
-import '../styles/SignUpForm.css';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import Nav from './universal/Nav';
-import Footer from './universal/Footer';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import React from "react";
+import "../styles/SignUpForm.css";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import Nav from "./universal/Nav";
+import Footer from "./universal/Footer";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 class SignUp extends React.Component {
   state = {
@@ -16,28 +16,32 @@ class SignUp extends React.Component {
       number_of_prisoners: "",
       prison_address: ""
     }
-  }
+  };
 
-  handleChanges = e => {
+  handleChanges = (e) => {
     this.setState({
       credentials: {
         ...this.state.credentials,
         [e.target.name]: e.target.value
       }
     });
-  }
+  };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    console.log('register button clicked')
+    console.log("register button clicked");
 
-    axios.post(`https://prisoner-skills-backend.herokuapp.com/api/auth/register`, this.state.credentials)
-      .then(res => {
+    axios
+      .post(
+        `https://prisoner-skills-backend.herokuapp.com/api/auth/register`,
+        this.state.credentials
+      )
+      .then((res) => {
         console.log(res);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
-      })
+      });
 
     this.setState({
       credentials: {
@@ -48,14 +52,14 @@ class SignUp extends React.Component {
         number_of_prisoners: "",
         prison_address: ""
       }
-    })
-  }
+    });
+  };
 
   render() {
     return (
-      <div>
+      <div className="signupContainer">
         <Nav />
-        <h3>Sign Up Form</h3>
+        <h3>Sign Up For An Account</h3>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -102,11 +106,14 @@ class SignUp extends React.Component {
 
           <button>Register</button>
         </form>
-        <span>Already have an account yet?</span> <span><Link to="/log-in">Log In Here</Link></span>
+        <span>Already have an account yet?</span>{" "}
+        <span>
+          <Link to="/log-in">Log In Here</Link>
+        </span>
         <Footer />
       </div>
     );
   }
-};
+}
 
 export default SignUp;

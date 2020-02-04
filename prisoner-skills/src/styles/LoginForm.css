@@ -2,6 +2,47 @@
   color: red;
 }
 
+span a {
+  color: black;
+}
+span a:hover {
+  color: #e8a87c;
+}
+
 a {
   text-decoration: none;
+}
+
+.loginContainer {
+  background: #d8d9d1;
+}
+
+input {
+  border-radius: 8px;
+  padding: 0.75%;
+  margin: 1%;
+  width: 75%;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+button {
+  width: 25%;
+  padding: 1%;
+  background: #41b3a3;
+  border: none;
+  border-radius: 8px;
+}
+
+button:hover {
+  color: #e8a87c;
+}
+
+.noAccountDiv {
+  margin: 1% 0%;
 }
