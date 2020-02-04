@@ -7,15 +7,12 @@ import '../styles/PrisonCard.css';
 
 const PrisonCard = props => {
   return (
-    <div key={props.prison_name} className="prisonCard">
-      <h4>{props.prison_name}</h4>
-      {props.inmates.map(person => {
+    <div>
+      {props.prisons.map(prison => {
         return (
-          <div key={person.name}>
-            <p className="inmateName">{person.name}</p>
-            {person.skills.map(skill => {
-              return <span key={skill} className="skill">{skill}</span>
-            })}
+          <div className="prisonCard" key={prison.prison_name}>
+            <h4>{prison.prison_name}</h4>
+            <p>{prison.prison_address}</p>
           </div>
         )
       })}

@@ -16,22 +16,24 @@ the home page needs to have the following:
 -footer
 */
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import '../styles/Homepage.css';
 // import { Switch, Route } from 'react-router-dom';
 import Nav from './universal/Nav';
 import Footer from './universal/Footer';
 import Prisons from './Prisons';
-import { data } from '../data';
+// import { data } from '../data';
+// import axios from 'axios';
+
+// https://prisoner-skills-backend.herokuapp.com/api/prisons
 
 const Homepage = () => {
   return (
     <div>
       <Nav />
 
-      {/* Home page content will go here */}
       <h1>Home Page</h1>
-      <Prisons data={data} />
+      <Prisons />
 
       <Footer />
     </div>
