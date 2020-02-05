@@ -1,6 +1,8 @@
-.prisonGrid{
+.prisonGrid {
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  margin: 0 auto;
+  border: 0px solid red;
 }
