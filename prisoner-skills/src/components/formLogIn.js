@@ -18,7 +18,7 @@ import axios from "axios";
 //Yup validation
 const SignUpSchema = Yup.object().shape({
   username: Yup.string()
-    .min(3, "Username of 3 characters minimum")
+    .min(2, "Username of 3 characters minimum")
     .required("* Required Field"),
   password: Yup.string()
     .min(3, "Password of 3 characters minimum")
@@ -51,8 +51,7 @@ const LogIn = (props) => {
               console.log(res);
               localStorage.setItem("TOKEN", res.data.token);
               setIsLoading(false);
-              // props.history.push('/')
-              // props.history.push(`/prison-profile/${res.data.id}`);
+              props.history.push('/')
             })
             .catch((err) => {
               console.log(err);

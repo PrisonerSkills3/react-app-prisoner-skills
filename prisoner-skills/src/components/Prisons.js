@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import PrisonCard from "./PrisonCard";
-import "../styles/Prisons.css";
-import { connect } from "react-redux";
-import { fetchPrisons } from "../actions/fetchPrisons";
+import React from 'react';
+import PrisonCard from './PrisonCard';
+import '../styles/Prisons.css';
+import { connect } from 'react-redux';
+import { fetchPrisons } from '../actions/fetchPrisons';
 
-const Prisons = (props) => {
+const Prisons = props => {
   return (
     <div className="prisonGrid">
       <button onClick={props.fetchPrisons} className="viewPrisonBtn">
