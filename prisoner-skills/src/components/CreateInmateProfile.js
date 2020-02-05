@@ -18,7 +18,6 @@ import '../styles/CreateInmateProfile.css';
 
 const CreateInmateProfile = (props) => {
   const {prisonId} = useParams();
-  console.log(prisonId);
 
   return (
     <div>

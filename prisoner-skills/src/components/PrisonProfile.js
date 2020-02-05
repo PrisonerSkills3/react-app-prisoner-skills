@@ -24,7 +24,16 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 const PrisonProfile = () => {
   let { prisonId } = useParams();
   let match = useRouteMatch();
+
   const [prison, setPrison] = useState([]);
+  const initialInmate = {
+    prisoner_name: '',
+    prisoner_availability: '',
+    prisoner_skills: ''
+  }
+  const [editing, setEditing] = useState(false);
+  const [inmateToEdit, setInmateToEdit] = useState(initialInmate);
+  console.log('inmate to edit: ', inmateToEdit);
 
   //erik GET request
   useEffect(() => {
@@ -36,7 +45,24 @@ const PrisonProfile = () => {
         console.log(err)
       })
   }, [prisonId])
-  console.log(prison)
+  console.log('prison: ', prison)
+
+  const editInmate = inmate => {
+    setEditing(!editing)
+    setInmateToEdit(inmate)
+  }
+
+  const saveEdit = e => {
+    e.preventDefault();
+    console.log('save button clicked');
+
+    axiosWithAuth().put(`/api/auth/edit-prisoner/${inmateToEdit.id}`, inmateToEdit)
+      .then(res => {
+        console.log('resolved data', res)
+        setEditing(!editing)
+      })
+      .catch(err => console.log(err));
+  }
 
   const deleteInmate = (id) => {
     axiosWithAuth().delete(`/api/auth/delete-prisoner/${id}`)
@@ -53,6 +79,8 @@ const PrisonProfile = () => {
     <div>
       <Nav />
       <h2>Prison profile # {prisonId}</h2>
+
+
       {prison.map(item => {
         return (
           <div key={item.id}>
@@ -67,12 +95,43 @@ const PrisonProfile = () => {
               }}><img src={trashIcon}  alt="" /></div>
               <div className="editIcon" onClick={(e) => {
                 e.preventDefault();
-                console.log('edit clicked');
+                editInmate(item);
+                console.log(editing)
+                console.log('edit clicked -- inmate to edit: ', inmateToEdit);
               }}><img src={editIcon}  alt="" /></div>
             </div>
           </div>
         )
       })}
+
+
+      {editing && (
+        <form onSubmit={saveEdit}>
+          <legend>Edit Inmate</legend>
+          <label>
+            Inmates Name:
+            <input
+              onChange={e => {
+                setInmateToEdit({...inmateToEdit, prisoner_name: e.target.value})
+              }}
+              value={inmateToEdit.prisoner_name}
+            />
+          </label>
+
+          <label>
+            Inmates Skills:
+            <input
+              onChange={e => {
+                setInmateToEdit({ ...inmateToEdit, prisoner_skills: e.target.value})
+              }}
+              value={inmateToEdit.prisoner_skills}
+            />
+          </label>
+          <button onClick={() => {}}>Save</button>
+        </form>
+      )}
+
+
       <Link to={`${match.url}/add-inmate`}>Add New Inmate</Link>
       <Footer />
     </div>
