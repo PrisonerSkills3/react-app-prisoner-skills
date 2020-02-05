@@ -30,7 +30,7 @@ const LogIn = (props) => {
   return (
     <div className="loginContainer">
       <Nav />
-      <h3>Login to Your Account</h3>
+      <h3 className="headerForms">Login to Your Account</h3>
 
       {/* Formik values/validation */}
       <Formik
@@ -42,7 +42,11 @@ const LogIn = (props) => {
         onSubmit={(values, formikBag) => {
           setIsLoading(true);
           formikBag.resetForm();
-          axios.post("https://prisoner-skills-backend.herokuapp.com/api/auth/login", values)
+          axios
+            .post(
+              "https://prisoner-skills-backend.herokuapp.com/api/auth/login",
+              values
+            )
             .then((res) => {
               console.log(res);
               localStorage.setItem("TOKEN", res.data.token);

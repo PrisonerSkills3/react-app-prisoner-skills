@@ -1,5 +1,5 @@
 .signupContainer {
-  background: #d8d9d1;
+  background: #012b4d;
 }
 
 input {
@@ -11,4 +11,5 @@ input {
 
 .haveAccountDiv {
   margin: 1% 0%;
+  color: white;
 }

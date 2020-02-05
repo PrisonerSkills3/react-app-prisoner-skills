@@ -8,6 +8,7 @@ header {
 header h1 {
   margin-left: 2%;
   font-family: "Raleway", sans-serif;
+  color: #41b3a3;
 }
 
 header nav {
@@ -21,7 +22,7 @@ header nav {
 
 header nav a {
   text-decoration: none;
-  background: #41b3a3;
+  color: #41b3a3;
   width: 25%;
   padding: 2%;
   font-family: "Raleway", sans-serif;
@@ -29,4 +30,22 @@ header nav a {
 
 header nav a:hover {
   color: #e8a87c;
+}
+
+/* Page Transition */
+
+body {
+  animation: transitionInEffect 1s;
+}
+
+@keyframes transitionInEffect {
+  from {
+    opacity: 0;
+    transform: rotateX(-100deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
 }

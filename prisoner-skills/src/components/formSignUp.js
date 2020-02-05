@@ -60,7 +60,7 @@ class SignUp extends React.Component {
     return (
       <div className="signupContainer">
         <Nav />
-        <h3>Sign Up For An Account</h3>
+        <h3 className="headerForms">Sign Up For An Account</h3>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"

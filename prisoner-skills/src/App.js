@@ -1,8 +1,8 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import "./styles/App.css";
 import HomePage from "./components/Homepage";
-import PrisonProfile from './components/PrisonProfile';
+import PrisonProfile from "./components/PrisonProfile";
 import LogIn from "./components/formLogIn";
 import SignUp from "./components/formSignUp";
 // import { connect } from 'react-redux';

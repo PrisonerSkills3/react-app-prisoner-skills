@@ -13,11 +13,32 @@ footer {
 footer a {
   font-family: "Raleway", sans-serif;
   text-decoration: none;
-  background: #41b3a3;
-  width: 7%;
-  padding: 1%;
+  color: #41b3a3;
+  padding: 0.5%;
 }
 
 footer a:hover {
   color: #e8a87c;
+}
+
+footer h4 {
+  color: #41b3a3;
+}
+
+/* Page Transition */
+
+body {
+  animation: transitionInEffect 1s;
+}
+
+@keyframes transitionInEffect {
+  from {
+    opacity: 0;
+    transform: rotateX(-100deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
 }
