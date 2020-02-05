@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer>
       {/* <Link />'s go here */}
-      <h4>Prisoner Skills</h4>
+      <h4>SkillsBuddies</h4>
       <Link to="/">Home</Link>
     </footer>
   );

@@ -74,7 +74,8 @@ const PrisonProfile = () => {
     axiosWithAuth().put(`/api/auth/edit-prisoner/${inmateToEdit.id}`, payload)
       .then(res => {
         console.log('resolved data', res)
-        setEditing(!editing)
+        setEditing(!editing);
+        window.location.reload();
       })
       .catch(err => console.log(err));
   }
@@ -102,8 +103,8 @@ const PrisonProfile = () => {
         return (
           <div key={item.id}>
             <p>{item.prisoner_name}</p>
-            <p>{item.prisoner_availability === 0 ? "Not available for work leave" : "Available for work leave"}</p>
-            <p>{item.prisoner_skills}</p>
+            <p>Availability: {item.prisoner_availability === 0 ? "Not available for work leave" : "Available for work leave"}</p>
+            <p>Skills: {item.prisoner_skills}</p>
 
             <div className="iconBox">
               <div className="trashIcon" onClick={(e) => {
@@ -168,5 +169,3 @@ const PrisonProfile = () => {
 };
 
 export default PrisonProfile;
-
-

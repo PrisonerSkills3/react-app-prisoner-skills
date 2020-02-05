@@ -1,15 +1,36 @@
-.skill{
+/* .skill {
   margin: 0 1vw;
-}
+} */
 
-.inmateName{
+/* .inmateName {
   font-weight: 500;
+} */
+
+.prisonCard {
+  border: 5px solid #e8a87c;
+  margin: 2% 2%;
+  width: 250px;
+  height: 150px;
+  background: #d8d9d1;
+  color: #41b3a3;
+  border-radius: 8px;
+}
+.prisonCard:hover {
+  background: #e8a87c;
 }
 
-.prisonCard{
-  border: 1px solid black;
-  margin: 1vh 1vw;
-  width: 300px;
+.cardContainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  align-items: center;
+  width: 90%;
+  border: 5px solid black;
+  border-radius: 8px;
+  background: #012b4d;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 1%;
 }
 
 .prisonImage{

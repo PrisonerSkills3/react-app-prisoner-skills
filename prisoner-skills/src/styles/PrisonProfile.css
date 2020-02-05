@@ -11,3 +11,6 @@
 .editIcon{
   cursor: pointer;
 }
+.profileWrapper {
+  background: grey;
+}

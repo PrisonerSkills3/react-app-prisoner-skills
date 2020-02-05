@@ -37,7 +37,7 @@ class SignUp extends React.Component {
       )
       .then((res) => {
         console.log(res);
-        this.props.history.push('/log-in');
+        this.props.history.push("/log-in");
       })
       .catch((err) => {
         console.log(err);
@@ -59,7 +59,7 @@ class SignUp extends React.Component {
     return (
       <div className="signupContainer">
         <Nav />
-        <h3>Sign Up For An Account</h3>
+        <h3 className="headerForms">Sign Up For An Account</h3>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -106,10 +106,12 @@ class SignUp extends React.Component {
 
           <button>Register</button>
         </form>
-        <span>Already have an account yet?</span>{" "}
-        <span>
-          <Link to="/log-in">Log In Here</Link>
-        </span>
+        <div className="haveAccountDiv">
+          <span>Already have an account yet?</span>{" "}
+          <span>
+            <Link to="/log-in">Log In Here</Link>
+          </span>
+        </div>
         <Footer />
       </div>
     );

@@ -6,10 +6,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/PrisonCard.css';
 
-const PrisonCard = props => {
+const PrisonCard = (props) => {
   return (
-    <div>
-      {props.prisons.map(prison => {
+    <div className="cardContainer">
+      {props.prisons.map((prison) => {
         return (
           <Link to={`/prison-profile/${prison.id}`} key={prison.prison_name}>
             <div className="prisonCard">
@@ -18,7 +18,7 @@ const PrisonCard = props => {
               <p>{prison.prison_address}</p>
             </div>
           </Link>
-        )
+        );
       })}
     </div>
   );
