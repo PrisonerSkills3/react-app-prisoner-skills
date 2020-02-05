@@ -7,17 +7,14 @@ Make a POST request to the endpoint the back end gives us to cretae a new inmate
 -schedule
 */
 
-// https://prisoner-skills-backend.herokuapp.com/api/auth/add-prisoner
 
-import React, { useState } from 'react';
-import '../styles/CreateInmateProfile.css';
-import axios from 'axios';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { Formik, Form, Field, setIn } from 'formik';
-import * as Yup from 'yup';
+import React from 'react';
 import Nav from './universal/Nav';
 import Footer from './universal/Footer';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { Formik, Form, Field } from 'formik';
 import { useParams } from 'react-router-dom';
+import '../styles/CreateInmateProfile.css';
 
 const CreateInmateProfile = (props) => {
   const {prisonId} = useParams();

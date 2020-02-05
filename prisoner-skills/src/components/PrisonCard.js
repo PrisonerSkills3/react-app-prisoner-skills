@@ -13,6 +13,7 @@ const PrisonCard = props => {
         return (
           <Link to={`/prison-profile/${prison.id}`} key={prison.prison_name}>
             <div className="prisonCard">
+              <img className="prisonImage" src={prison.image_url} alt="" />
               <h4>{prison.prison_name}</h4>
               <p>{prison.prison_address}</p>
             </div>

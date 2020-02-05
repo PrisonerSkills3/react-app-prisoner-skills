@@ -12,10 +12,14 @@ Prison profile will need to get data from the backend and display it to the dom 
 
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useRouteMatch } from 'react-router-dom';
-import '../styles/PrisonProfile.css';
 import axios from 'axios';
 import Nav from './universal/Nav';
 import Footer from './universal/Footer';
+import trashIcon from '../icons/trashIcon.png';
+import editIcon from '../icons/editIcon.png';
+import '../styles/PrisonProfile.css';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+
 
 const PrisonProfile = () => {
   let { prisonId } = useParams();
@@ -34,12 +38,40 @@ const PrisonProfile = () => {
   }, [prisonId])
   console.log(prison)
 
+  const deleteInmate = (id) => {
+    axiosWithAuth().delete(`/api/auth/delete-prisoner/${id}`)
+      .then(res => {
+        console.log(res)
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   return (
     <div>
       <Nav />
       <h2>Prison profile # {prisonId}</h2>
       {prison.map(item => {
-        return item.prisoner_name
+        return (
+          <div key={item.id}>
+            <p>{item.prisoner_name}</p>
+            <p>{item.prisoner_availability === 0 ? "Not available for work leave" : "Available for work leave"}</p>
+            <p>{item.prisoner_skills}</p>
+            <div className="iconBox">
+              <div className="trashIcon" onClick={(e) => {
+                e.preventDefault();
+                console.log('delete clicked');
+                deleteInmate(item.id);
+              }}><img src={trashIcon}  alt="" /></div>
+              <div className="editIcon" onClick={(e) => {
+                e.preventDefault();
+                console.log('edit clicked');
+              }}><img src={editIcon}  alt="" /></div>
+            </div>
+          </div>
+        )
       })}
       <Link to={`${match.url}/add-inmate`}>Add New Inmate</Link>
       <Footer />

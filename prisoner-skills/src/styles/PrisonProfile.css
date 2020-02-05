@@ -1,0 +1,13 @@
+.iconBox{
+  display: flex;
+  justify-content: center;
+}
+
+.trashIcon{
+  cursor: pointer;
+  margin-right: 1vw;
+}
+
+.editIcon{
+  cursor: pointer;
+}
