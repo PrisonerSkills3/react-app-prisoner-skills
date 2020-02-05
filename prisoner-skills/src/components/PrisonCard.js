@@ -3,8 +3,7 @@ Will need to display the details of the prison in a contained format (like a car
 */
 
 import React from 'react';
-import { Link, Switch, Route, useRouteMatch } from 'react-router-dom';
-import PrisonProfile from './PrisonProfile';
+import { Link } from 'react-router-dom';
 import '../styles/PrisonCard.css';
 
 const PrisonCard = props => {

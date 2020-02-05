@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PrisonCard from './PrisonCard';
 import '../styles/Prisons.css';
 import { connect } from 'react-redux';

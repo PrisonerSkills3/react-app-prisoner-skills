@@ -4,7 +4,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Nav from "./universal/Nav";
 import Footer from "./universal/Footer";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 class SignUp extends React.Component {
   state = {

@@ -5,8 +5,8 @@ import HomePage from "./components/Homepage";
 import PrisonProfile from './components/PrisonProfile';
 import LogIn from "./components/formLogIn";
 import SignUp from "./components/formSignUp";
-// import { connect } from 'react-redux';
-// import { fetchPrisons } from './actions/fetchPrisons';
+import CreateInmateProfile from './components/CreateInmateProfile';
+import PrivateRoute from './components/PrivateRoute';
 
 function App(props) {
   return (
@@ -14,20 +14,12 @@ function App(props) {
       <Switch>
         <Route path="/log-in" component={LogIn} />
         <Route path="/sign-up" component={SignUp} />
+        <PrivateRoute path="/prison-profile/:prisonId/add-inmate" component={CreateInmateProfile} />
         <Route path={`/prison-profile/:prisonId`} component={PrisonProfile} />
-        <Route path="/">
-          <HomePage />
-        </Route>
+        <Route path="/" component={HomePage} />
       </Switch>
     </div>
   );
 }
 
-// const mapStateToProps = state => ({
-//   isLoading: state.isLoading,
-//   error: state.error,
-//   prisons: state.prisons
-// })
-
-// export default connect(mapStateToProps, { fetchPrisons })(App);
 export default App;
