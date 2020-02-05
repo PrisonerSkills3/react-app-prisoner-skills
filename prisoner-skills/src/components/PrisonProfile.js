@@ -25,15 +25,22 @@ const PrisonProfile = () => {
   let { prisonId } = useParams();
   let match = useRouteMatch();
 
+
   const [prison, setPrison] = useState([]);
+
   const initialInmate = {
     prisoner_name: '',
-    prisoner_availability: '',
-    prisoner_skills: ''
+    prisoner_availability: false,
+    prisoner_skills: '',
+    prison_id: parseInt(prisonId)
   }
+
   const [editing, setEditing] = useState(false);
+
   const [inmateToEdit, setInmateToEdit] = useState(initialInmate);
+
   console.log('inmate to edit: ', inmateToEdit);
+
 
   //erik GET request
   useEffect(() => {
@@ -47,22 +54,31 @@ const PrisonProfile = () => {
   }, [prisonId])
   console.log('prison: ', prison)
 
+
   const editInmate = inmate => {
     setEditing(!editing)
     setInmateToEdit(inmate)
   }
 
+
   const saveEdit = e => {
     e.preventDefault();
     console.log('save button clicked');
-
-    axiosWithAuth().put(`/api/auth/edit-prisoner/${inmateToEdit.id}`, inmateToEdit)
+    const payload = {
+      prisoner_name: inmateToEdit.prisoner_name,
+      prisoner_availability: inmateToEdit.prisoner_availability === 1 ? true : false,
+      prisoner_skills: inmateToEdit.prisoner_skills,
+      prison_id: inmateToEdit.prison_id
+    }
+    console.log('payload', payload);
+    axiosWithAuth().put(`/api/auth/edit-prisoner/${inmateToEdit.id}`, payload)
       .then(res => {
         console.log('resolved data', res)
         setEditing(!editing)
       })
       .catch(err => console.log(err));
   }
+
 
   const deleteInmate = (id) => {
     axiosWithAuth().delete(`/api/auth/delete-prisoner/${id}`)
@@ -75,6 +91,7 @@ const PrisonProfile = () => {
       })
   }
 
+  
   return (
     <div>
       <Nav />
@@ -87,12 +104,14 @@ const PrisonProfile = () => {
             <p>{item.prisoner_name}</p>
             <p>{item.prisoner_availability === 0 ? "Not available for work leave" : "Available for work leave"}</p>
             <p>{item.prisoner_skills}</p>
+
             <div className="iconBox">
               <div className="trashIcon" onClick={(e) => {
                 e.preventDefault();
                 console.log('delete clicked');
                 deleteInmate(item.id);
               }}><img src={trashIcon}  alt="" /></div>
+              
               <div className="editIcon" onClick={(e) => {
                 e.preventDefault();
                 editInmate(item);
@@ -119,6 +138,16 @@ const PrisonProfile = () => {
           </label>
 
           <label>
+            Work Leave?
+            <input
+              onChange={e => {
+                setInmateToEdit({...inmateToEdit, prisoner_availability: e.target.value})
+              }}
+              value={inmateToEdit.prisoner_availability}
+            />
+          </label>
+
+          <label>
             Inmates Skills:
             <input
               onChange={e => {
@@ -127,7 +156,7 @@ const PrisonProfile = () => {
               value={inmateToEdit.prisoner_skills}
             />
           </label>
-          <button onClick={() => {}}>Save</button>
+          <button>Save</button>
         </form>
       )}
 

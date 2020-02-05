@@ -21,7 +21,6 @@ const CreateInmateProfile = (props) => {
 
   return (
     <div>
-      <h1>Create Inmate Profile</h1>
       <Formik
         initialValues={{
           prisoner_name: '',
