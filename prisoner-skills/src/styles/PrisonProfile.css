@@ -1,16 +1,13 @@
-.iconBox{
+.iconBox {
   display: flex;
   justify-content: center;
 }
 
-.trashIcon{
+.trashIcon {
   cursor: pointer;
   margin-right: 1vw;
 }
 
-.editIcon{
+.editIcon {
   cursor: pointer;
-}
-.profileWrapper {
-  background: grey;
 }
