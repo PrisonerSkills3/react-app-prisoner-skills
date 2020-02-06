@@ -10,120 +10,132 @@ Prison profile will need to get data from the backend and display it to the dom 
 -create new profile for inmate form or link to the form
 */
 
-import React, { useState, useEffect } from 'react';
-import { useParams, Link, useRouteMatch } from 'react-router-dom';
-import axios from 'axios';
-import Nav from './universal/Nav';
-import Footer from './universal/Footer';
-import trashIcon from '../icons/trashIcon.png';
-import editIcon from '../icons/editIcon.png';
-import '../styles/PrisonProfile.css';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-
+import React, { useState, useEffect } from "react";
+import { useParams, Link, useRouteMatch } from "react-router-dom";
+import axios from "axios";
+import Nav from "./universal/Nav";
+import Footer from "./universal/Footer";
+import trashIcon from "../icons/trashIcon.png";
+import editIcon from "../icons/editIcon.png";
+import "../styles/PrisonProfile.css";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const PrisonProfile = () => {
   let { prisonId } = useParams();
   let match = useRouteMatch();
 
-
   const [prison, setPrison] = useState([]);
 
   const initialInmate = {
-    prisoner_name: '',
+    prisoner_name: "",
     prisoner_availability: false,
-    prisoner_skills: '',
+    prisoner_skills: "",
     prison_id: parseInt(prisonId)
-  }
+  };
 
   const [editing, setEditing] = useState(false);
 
   const [inmateToEdit, setInmateToEdit] = useState(initialInmate);
 
-  console.log('inmate to edit: ', inmateToEdit);
-
+  console.log("inmate to edit: ", inmateToEdit);
 
   //erik GET request
   useEffect(() => {
-    axios.get(`https://prisoner-skills-backend.herokuapp.com/api/prisons/${prisonId}/prisoners`)
-      .then(res => {
-        setPrison(res.data)
+    axios
+      .get(
+        `https://prisoner-skills-backend.herokuapp.com/api/prisons/${prisonId}/prisoners`
+      )
+      .then((res) => {
+        setPrison(res.data);
       })
-      .catch(err => {
-        console.log(err)
-      })
-  }, [prisonId])
-  console.log('prison: ', prison)
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [prisonId]);
+  console.log("prison: ", prison);
 
+  const editInmate = (inmate) => {
+    setEditing(!editing);
+    setInmateToEdit(inmate);
+  };
 
-  const editInmate = inmate => {
-    setEditing(!editing)
-    setInmateToEdit(inmate)
-  }
-
-
-  const saveEdit = e => {
+  const saveEdit = (e) => {
     e.preventDefault();
-    console.log('save button clicked');
+    console.log("save button clicked");
     const payload = {
       prisoner_name: inmateToEdit.prisoner_name,
-      prisoner_availability: inmateToEdit.prisoner_availability === 1 ? true : false,
+      prisoner_availability:
+        inmateToEdit.prisoner_availability === 1 ? true : false,
       prisoner_skills: inmateToEdit.prisoner_skills,
       prison_id: inmateToEdit.prison_id
-    }
-    console.log('payload', payload);
-    axiosWithAuth().put(`/api/auth/edit-prisoner/${inmateToEdit.id}`, payload)
-      .then(res => {
-        console.log('resolved data', res)
+    };
+    console.log("payload", payload);
+    axiosWithAuth()
+      .put(`/api/auth/edit-prisoner/${inmateToEdit.id}`, payload)
+      .then((res) => {
+        console.log("resolved data", res);
         setEditing(!editing);
         window.location.reload();
       })
-      .catch(err => console.log(err));
-  }
-
+      .catch((err) => console.log(err));
+  };
 
   const deleteInmate = (id) => {
-    axiosWithAuth().delete(`/api/auth/delete-prisoner/${id}`)
-      .then(res => {
-        console.log(res)
+    axiosWithAuth()
+      .delete(`/api/auth/delete-prisoner/${id}`)
+      .then((res) => {
+        console.log(res);
         window.location.reload();
       })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  
   return (
     <div>
       <Nav />
       <h2>Prison profile # {prisonId}</h2>
 
-
-      {prison.map(item => {
+      {prison.map((item) => {
         return (
           <div key={item.id}>
             <p>{item.prisoner_name}</p>
-            <p>Availability: {item.prisoner_availability === 0 ? "Not available for work leave" : "Available for work leave"}</p>
+            <p>
+              Availability:{" "}
+              {item.prisoner_availability === 0
+                ? "Not available for work leave"
+                : "Available for work leave"}
+            </p>
             <p>Skills: {item.prisoner_skills}</p>
 
             <div className="iconBox">
-              <div className="trashIcon" onClick={(e) => {
-                e.preventDefault();
-                console.log('delete clicked');
-                deleteInmate(item.id);
-              }}><img src={trashIcon}  alt="" /></div>
-              
-              <div className="editIcon" onClick={(e) => {
-                e.preventDefault();
-                editInmate(item);
-                console.log(editing)
-                console.log('edit clicked -- inmate to edit: ', inmateToEdit);
-              }}><img src={editIcon}  alt="" /></div>
+              <div
+                className="trashIcon"
+                onClick={(e) => {
+                  e.preventDefault();
+                  console.log("delete clicked");
+                  deleteInmate(item.id);
+                }}
+              >
+                <img src={trashIcon} alt="" />
+              </div>
+
+              <div
+                className="editIcon"
+                onClick={(e) => {
+                  e.preventDefault();
+                  editInmate(item);
+                  console.log(editing);
+                  console.log("edit clicked -- inmate to edit: ", inmateToEdit);
+                }}
+              >
+                <img src={editIcon} alt="" />
+              </div>
             </div>
           </div>
-        )
+        );
       })}
-
 
       {editing && (
         <form onSubmit={saveEdit}>
@@ -131,8 +143,11 @@ const PrisonProfile = () => {
           <label>
             Inmates Name:
             <input
-              onChange={e => {
-                setInmateToEdit({...inmateToEdit, prisoner_name: e.target.value})
+              onChange={(e) => {
+                setInmateToEdit({
+                  ...inmateToEdit,
+                  prisoner_name: e.target.value
+                });
               }}
               value={inmateToEdit.prisoner_name}
             />
@@ -141,8 +156,11 @@ const PrisonProfile = () => {
           <label>
             Work Leave?
             <input
-              onChange={e => {
-                setInmateToEdit({...inmateToEdit, prisoner_availability: e.target.value})
+              onChange={(e) => {
+                setInmateToEdit({
+                  ...inmateToEdit,
+                  prisoner_availability: e.target.value
+                });
               }}
               value={inmateToEdit.prisoner_availability}
             />
@@ -151,8 +169,11 @@ const PrisonProfile = () => {
           <label>
             Inmates Skills:
             <input
-              onChange={e => {
-                setInmateToEdit({ ...inmateToEdit, prisoner_skills: e.target.value})
+              onChange={(e) => {
+                setInmateToEdit({
+                  ...inmateToEdit,
+                  prisoner_skills: e.target.value
+                });
               }}
               value={inmateToEdit.prisoner_skills}
             />
@@ -161,8 +182,7 @@ const PrisonProfile = () => {
         </form>
       )}
 
-
-      <Link to={`${match.url}/add-inmate`}>Add New Inmate</Link>
+      <Link to={`${match.url}/add-inmate`}>➕ Add New Inmate</Link>
       <Footer />
     </div>
   );
