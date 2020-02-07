@@ -1,13 +1,83 @@
-.iconBox {
+
+.inmateCard{
+  font-family: Helvetica;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+  margin: 0 auto;
+  margin-bottom: 5vh;
+  background: rgba(245, 245, 245, 0.40);
+  padding: 2vh 2vw;
+}
+
+.location{
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-size: .8rem;
+}
+
+.waypoint{
+  width: 20px;
+}
+
+.inmatesPrisonName{
+  font-style: italic;
+}
+
+.outterBox{
+  display: flex;
+  flex-flow: column;
+  margin: 0 1vw;
+}
+
+.nameSchedule{
+  display: flex;
+  margin: 0 auto;
+}
+
+.inmateName{
+  border-bottom: 1px solid gray;
+  display: flex;
+  flex-flow: column;
+  margin-right: 1vw;
+  padding-bottom: 1vh;
+}
+
+.inmateAvail{
+  border-bottom: 1px solid gray;
+  display: flex;
+  flex-flow: column;
+  padding-bottom: 1vh;
+}
+
+.inmateSkills{
+  border-bottom: 1px solid gray;
+  display: flex;
+  flex-flow: column;
+  padding-bottom: 1vh;
+}
+
+.bold{
+  font-weight: 600;
+  margin-bottom: 1vh;
+}
+
+.iconBox{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2vw;
 }
 
 .trashIcon {
   cursor: pointer;
-  margin-right: 1vw;
 }
 
 .editIcon {
   cursor: pointer;
+  margin-bottom: 5vh;
 }
+

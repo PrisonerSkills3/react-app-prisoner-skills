@@ -17,6 +17,8 @@ import Nav from "./universal/Nav";
 import Footer from "./universal/Footer";
 import trashIcon from "../icons/trashIcon.png";
 import editIcon from "../icons/editIcon.png";
+import profileAvi from '../icons/profileAvi.png';
+import waypoint from '../icons/waypoint.png';
 import "../styles/PrisonProfile.css";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -36,8 +38,6 @@ const PrisonProfile = () => {
   const [editing, setEditing] = useState(false);
 
   const [inmateToEdit, setInmateToEdit] = useState(initialInmate);
-
-  console.log("inmate to edit: ", inmateToEdit);
 
   //erik GET request
   useEffect(() => {
@@ -99,28 +99,45 @@ const PrisonProfile = () => {
 
       {prison.map((item) => {
         return (
-          <div key={item.id}>
-            <p>{item.prisoner_name}</p>
-            <p>
-              Availability:{" "}
-              {item.prisoner_availability === 0
-                ? "Not available for work leave"
-                : "Available for work leave"}
-            </p>
-            <p>Skills: {item.prisoner_skills}</p>
+          <div key={item.id} className="inmateCard">
+            <div className="imgBox">
+              <img src={profileAvi} className="inmateImage" />
+              <div className="location">
+                <span><img src={waypoint} className="waypoint" /></span>
+                <span className="inmatesPrisonName">{item.prison_name}</span>
+              </div>
+            </div>
+
+
+            <div className="outterBox">
+              <div className="nameSchedule">
+                <p className="inmateName">
+                  <span className="bold">Name:</span> 
+                  <span>
+                    {item.prisoner_name}
+                  </span>
+                </p>
+                <p className="inmateAvail">
+                  <span className="bold">Availability:</span>
+                  <span>
+                  {item.prisoner_availability === 0
+                    ? "Not available for work leave"
+                    : "Available for work leave"}
+                  </span>
+                </p>
+              </div>
+              <div className="skillsBox">
+                <p className="inmateSkills">
+                  <span className="bold">Skills:</span> 
+                  <span>
+                    {item.prisoner_skills}
+                  </span>
+                </p>
+              </div>
+            </div>
+
 
             <div className="iconBox">
-              <div
-                className="trashIcon"
-                onClick={(e) => {
-                  e.preventDefault();
-                  console.log("delete clicked");
-                  deleteInmate(item.id);
-                }}
-              >
-                <img src={trashIcon} alt="" />
-              </div>
-
               <div
                 className="editIcon"
                 onClick={(e) => {
@@ -131,6 +148,16 @@ const PrisonProfile = () => {
                 }}
               >
                 <img src={editIcon} alt="" />
+              </div>
+              <div
+                className="trashIcon"
+                onClick={(e) => {
+                  e.preventDefault();
+                  console.log("delete clicked");
+                  deleteInmate(item.id);
+                }}
+              >
+                <img src={trashIcon} alt="" />
               </div>
             </div>
           </div>
@@ -182,7 +209,7 @@ const PrisonProfile = () => {
         </form>
       )}
 
-      <Link to={`${match.url}/add-inmate`}>➕ Add New Inmate</Link>
+      <Link to={`${match.url}/add-inmate`} className="addInmateBtn">➕ Add New Inmate</Link>
       <Footer />
     </div>
   );
